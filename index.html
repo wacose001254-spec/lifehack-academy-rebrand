@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lifehack Academy | Premium Educational Rebrand</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #F9F9F9; overflow-x: hidden; scroll-behavior: smooth; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+        
+        .slider-container { position: relative; height: 90vh; width: 100%; overflow: hidden; }
+        .slide { 
+            position: absolute; inset: 0; opacity: 0; transition: opacity 1.5s ease-in-out, transform 10s linear; 
+            background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center;
+        }
+        .slide.active { opacity: 1; transform: scale(1.15); }
+        .parallax-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,35,102,0.3), rgba(0,35,102,0.8)); z-index: 10; }
+        
+        .text-prestige-gold { color: #E1AD01; }
+        .bg-prestige-navy { background-color: #002366; }
+        .btn-gold { background-color: #E1AD01; color: white; transition: all 0.3s ease; cursor: pointer; border: none; }
+        .btn-gold:hover { background-color: #c49600; transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(225, 173, 1, 0.3); }
+        
+        .page-content { display: none; animation: fadeIn 0.6s ease forwards; }
+        .page-active { display: block; }
+        
+        .modal { display: none; position: fixed; inset: 0; z-index: 100; background: rgba(0,0,0,0.8); backdrop-filter: blur(8px); align-items: center; justify-content: center; padding: 20px; }
+        .modal.active { display: flex; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm py-4 px-8 flex justify-between items-center border-b border-gray-100">
+        <div class="text-2xl font-bold text-[#002366] cursor-pointer" onclick="showPage('home')">
+            LIFEHACK<span class="text-prestige-gold">ACADEMY</span>
+        </div>
+        <div class="hidden md:flex space-x-8 font-medium text-gray-600">
+            <span class="cursor-pointer hover:text-prestige-gold transition" onclick="showPage('home')">Home</span>
+            <span class="cursor-pointer hover:text-prestige-gold transition" onclick="showPage('curriculum')">Curriculum</span>
+            <span class="cursor-pointer hover:text-prestige-gold transition" onclick="showPage('about')">About</span>
+            <span class="cursor-pointer hover:text-prestige-gold transition" onclick="showPage('contact')">Admissions</span>
+        </div>
+        <button onclick="showPage('contact')" class="btn-gold px-6 py-2 rounded-full font-semibold">Consult Now</button>
+    </nav>
+
+    <main id="home" class="page-content page-active">
+        <section class="slider-container">
+            <div class="parallax-overlay"></div>
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2000');">
+                <div class="relative z-20 text-center px-4 max-w-4xl text-white">
+                    <h1 class="text-5xl md:text-7xl mb-4">Holistic <span class="text-prestige-gold italic">Excellence.</span></h1>
+                    <p class="text-xl text-gray-200">Developing the mind, body, and spirit in Nairobi's leading learning hub.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=2000');">
+                <div class="relative z-20 text-center px-4 max-w-4xl text-white">
+                    <h1 class="text-5xl md:text-7xl mb-4">Creative <span class="text-prestige-gold italic">Expression.</span></h1>
+                    <p class="text-xl text-gray-200">Our annual musicals and drama festivals bring out the star in every student.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1529070538074-1ae9e6727284?q=80&w=2000');">
+                <div class="relative z-20 text-center px-4 max-w-4xl text-white">
+                    <h1 class="text-5xl md:text-7xl mb-4">Strategic <span class="text-prestige-gold italic">Leadership.</span></h1>
+                    <p class="text-xl text-gray-200">Empowering parents and students through collaborative consultation.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1577412647305-991150c7d163?q=80&w=2000');">
+                <div class="relative z-20 text-center px-4 max-w-4xl text-white">
+                    <h1 class="text-5xl md:text-7xl mb-4">Digital <span class="text-prestige-gold italic">Innovation.</span></h1>
+                    <p class="text-xl text-gray-200">Mastering 21st-century technology skills in a modern lab environment.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?q=80&w=2000');">
+                <div class="relative z-20 text-center px-4 max-w-4xl text-white">
+                    <h1 class="text-5xl md:text-7xl mb-4">Athletic <span class="text-prestige-gold italic">Prowess.</span></h1>
+                    <p class="text-xl text-gray-200">Competitive sports that build character, teamwork, and resilience.</p>
+                </div>
+            </div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1523580494863-6f3031224c94?q=80&w=2000');">
+                <div class="relative z-20 text-center px-4 max-w-4xl text-white">
+                    <h1 class="text-5xl md:text-7xl mb-4">Grand <span class="text-prestige-gold italic">Graduations.</span></h1>
+                    <p class="text-xl text-gray-200">Celebrating the milestones of our future global leaders.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-20 px-8 max-w-6xl mx-auto text-center">
+            <h2 class="text-4xl text-[#002366] mb-8">The Lifehack Standard</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div class="p-6">
+                    <i data-lucide="users" class="w-12 h-12 text-prestige-gold mx-auto mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Small Class Sizes</h3>
+                    <p class="text-gray-600 italic text-sm">Ensuring personalized attention for every unique learning style.</p>
+                </div>
+                <div class="p-6">
+                    <i data-lucide="shield-check" class="w-12 h-12 text-prestige-gold mx-auto mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">TSC Certified</h3>
+                    <p class="text-gray-600 italic text-sm">Expert tutors vetted by the Teachers Service Commission of Kenya.</p>
+                </div>
+                <div class="p-6">
+                    <i data-lucide="award" class="w-12 h-12 text-prestige-gold mx-auto mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Global Pedigree</h3>
+                    <p class="text-gray-600 italic text-sm">Curricula recognized by the world's most prestigious universities.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <main id="about" class="page-content py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-8">
+            <div class="flex flex-col md:flex-row gap-16 items-center mb-20">
+                <div class="md:w-1/2">
+                    <h2 class="text-5xl text-[#002366] mb-6">Our Visionary Leadership</h2>
+                    <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                        Founded in 2018 by <strong>Martin Nyaga</strong>, Lifehack Academy was born from a simple observation: every child is a unique genius waiting for the right environment. 
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        Under Martin's leadership, we have grown from a small tuition center into a premier international school that blends academic rigor with the emotional intelligence required for modern success.
+                    </p>
+                    <div class="bg-gray-50 border-l-4 border-prestige-gold p-6 italic text-gray-700">
+                        "We don't just teach subjects; we coach life skills. Our training ensures holistic growth that stays with a student long after they leave the classroom."
+                    </div>
+                </div>
+                <div class="md:w-1/2 relative">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000" class="rounded-3xl shadow-2xl" alt="Director">
+                    <div class="absolute -bottom-6 left-6 bg-prestige-navy text-white p-6 rounded-xl">
+                        <p class="font-bold">Martin Nyaga</p>
+                        <p class="text-xs text-prestige-gold">Director & Lead Educator</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <div class="bg-gray-50 p-10 rounded-3xl">
+                    <h3 class="text-2xl font-bold text-[#002366] mb-4">Our Mission</h3>
+                    <p class="text-gray-600">To provide flexible, world-class education that empowers students to identify their passions early and master the curricula that suit their future goals.</p>
+                </div>
+                <div class="bg-gray-50 p-10 rounded-3xl">
+                    <h3 class="text-2xl font-bold text-[#002366] mb-4">The Promise</h3>
+                    <ul class="text-gray-600 space-y-2">
+                        <li>• Personalized learning pathways</li>
+                        <li>• Integrated life-skills training</li>
+                        <li>• Continuous parental feedback loop</li>
+                        <li>• Safe, secure, and modern campus</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="curriculum" class="page-content py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-8 text-center">
+            <h2 class="text-5xl text-[#002366] mb-16">Academic Excellence</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-8 rounded-2xl shadow-sm border-t-4 border-[#002366] hover:shadow-xl transition-all cursor-pointer" onclick="openModal('cambridge')">
+                    <h3 class="text-xl font-bold mb-3">Cambridge Int.</h3>
+                    <p class="text-gray-600 text-sm mb-6">World-class academic rigor from Primary to A-Levels.</p>
+                    <span class="text-prestige-gold font-bold">Explore Curriculum →</span>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border-t-4 border-prestige-gold hover:shadow-xl transition-all cursor-pointer" onclick="openModal('edexcel')">
+                    <h3 class="text-xl font-bold mb-3">Pearson Edexcel</h3>
+                    <p class="text-gray-600 text-sm mb-6">Modular assessments designed for consistent progress.</p>
+                    <span class="text-prestige-gold font-bold">Explore Curriculum →</span>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border-t-4 border-[#002366] hover:shadow-xl transition-all cursor-pointer" onclick="openModal('ib')">
+                    <h3 class="text-xl font-bold mb-3">IB Diploma</h3>
+                    <p class="text-gray-600 text-sm mb-6">Inquiry-based learning for the future global leader.</p>
+                    <span class="text-prestige-gold font-bold">Explore Curriculum →</span>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border-t-4 border-prestige-gold hover:shadow-xl transition-all cursor-pointer" onclick="openModal('cbc')">
+                    <h3 class="text-xl font-bold mb-3">Kenyan CBC</h3>
+                    <p class="text-gray-600 text-sm mb-6">Competency-based national excellence for Kenya.</p>
+                    <span class="text-prestige-gold font-bold">Explore Curriculum →</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main id="contact" class="page-content py-20">
+        <div class="max-w-3xl mx-auto px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl text-[#002366] mb-2">Family Enrollment Inquiry</h2>
+                <p class="text-gray-500">Tell us about your child so we can tailor the best learning experience.</p>
+            </div>
+            
+            <div class="bg-white p-10 rounded-3xl shadow-2xl border border-gray-100">
+                <form id="enrollmentForm" class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div><label class="block text-sm font-bold mb-2">Parent Name</label><input type="text" id="parentName" placeholder="John Doe" class="w-full p-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-prestige-gold outline-none"></div>
+                        <div><label class="block text-sm font-bold mb-2">Phone Number</label><input type="text" id="phone" placeholder="+254..." class="w-full p-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-prestige-gold outline-none"></div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div><label class="block text-sm font-bold mb-2">Student's Age</label><input type="number" id="childAge" class="w-full p-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-prestige-gold outline-none"></div>
+                        <div>
+                            <label class="block text-sm font-bold mb-2">Desired Curriculum</label>
+                            <select id="curriculumSelect" class="w-full p-3 rounded-lg border border-gray-200 outline-none">
+                                <option>Cambridge</option><option>Edexcel</option><option>IB</option><option>CBC</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div><label class="block text-sm font-bold mb-2">Current School & Grade</label><input type="text" id="currentSchool" class="w-full p-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-prestige-gold outline-none"></div>
+                    <div><label class="block text-sm font-bold mb-2">Special Learning Interests/Needs</label><textarea id="needs" class="w-full p-3 rounded-lg border border-gray-200 h-32 outline-none"></textarea></div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+                        <button type="button" onclick="submitToWhatsApp()" class="flex items-center justify-center gap-3 bg-[#25D366] text-white py-4 rounded-xl font-bold hover:scale-105 transition">
+                            <i data-lucide="message-circle"></i> Send via WhatsApp
+                        </button>
+                        <button type="button" onclick="submitToEmail()" class="flex items-center justify-center gap-3 bg-[#002366] text-white py-4 rounded-xl font-bold hover:scale-105 transition">
+                            <i data-lucide="mail"></i> Submit via Email
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <div id="infoModal" class="modal" onclick="closeModal(event)">
+        <div class="bg-white max-w-2xl w-full p-10 rounded-3xl relative" onclick="event.stopPropagation()">
+            <button onclick="closeModal(null)" class="absolute top-6 right-6 text-gray-400 hover:text-black"><i data-lucide="x"></i></button>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <footer class="bg-[#002366] text-white py-12 px-8 text-center">
+        <div class="text-xl font-bold mb-2 text-prestige-gold">LIFEHACK ACADEMY</div>
+        <p class="text-gray-400 text-sm">Along Kilimani Road, Nairobi | +254 705 512735</p>
+    </footer>
+
+    <script>
+        lucide.createIcons();
+
+        // SLIDER LOGIC
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        function rotateSlides() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(rotateSlides, 5000);
+
+        function showPage(id) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('page-active'));
+            document.getElementById(id).classList.add('page-active');
+            window.scrollTo(0,0);
+        }
+
+        function getFormData() {
+            return {
+                parent: document.getElementById('parentName').value,
+                phone: document.getElementById('phone').value,
+                age: document.getElementById('childAge').value,
+                curriculum: document.getElementById('curriculumSelect').value,
+                school: document.getElementById('currentSchool').value,
+                needs: document.getElementById('needs').value
+            };
+        }
+
+        function submitToWhatsApp() {
+            const f = getFormData();
+            const msg = encodeURIComponent(`Enrollment Inquiry:\nParent: ${f.parent}\nStudent Age: ${f.age}\nCurriculum: ${f.curriculum}\nCurrent School: ${f.school}\nNeeds: ${f.needs}`);
+            window.open(`https://wa.me/254705512735?text=${msg}`, '_blank');
+        }
+
+        function submitToEmail() {
+            const f = getFormData();
+            const body = encodeURIComponent(`Parent: ${f.parent}\nPhone: ${f.phone}\nStudent Age: ${f.age}\nCurriculum: ${f.curriculum}\nNeeds: ${f.needs}`);
+            window.location.href = `mailto:info@lifehackacademy.co.ke?subject=New Enrollment Inquiry&body=${body}`;
+        }
+
+        // MODAL CONTENT
+        const data = {
+            cambridge: { title: "Cambridge International", desc: "Recognized by top universities worldwide.", bullets: ["Deep subject knowledge", "Research skills", "Primary Checkpoint", "IGCSE & A Levels"] },
+            edexcel: { title: "Pearson Edexcel", desc: "Modular pathways for consistent academic growth.", bullets: ["Flexible exams", "Practical application", "Trusted pedigree", "Homeschool friendly"] },
+            ib: { title: "IB Diploma", desc: "Inquiry-based learning for global citizenship.", bullets: ["Theory of Knowledge", "Extended Essay", "Holistic development", "Global mindset"] },
+            cbc: { title: "Kenyan CBC", desc: "Competency-based national excellence.", bullets: ["KICD Aligned", "Talent focused", "Skill mastery", "8-4-4 transition support"] }
+        };
+
+        function openModal(key) {
+            const content = data[key];
+            document.getElementById('modalBody').innerHTML = `
+                <h2 class="text-3xl font-bold text-[#002366] mb-4">${content.title}</h2>
+                <ul class="space-y-3 mb-8">
+                    ${content.bullets.map(b => `<li class="flex items-center gap-2"><i data-lucide="check" class="text-prestige-gold w-5 h-5"></i>${b}</li>`).join('')}
+                </ul>
+                <button onclick="closeModal(null); showPage('contact')" class="btn-gold w-full py-4 rounded-xl font-bold">Inquire Now</button>
+            `;
+            document.getElementById('infoModal').classList.add('active');
+            lucide.createIcons();
+        }
+
+        function closeModal(e) { if(!e || e.target === document.getElementById('infoModal')) document.getElementById('infoModal').classList.remove('active'); }
+    </script>
+</body>
+</html>
